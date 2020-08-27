@@ -28,7 +28,9 @@ export default function DetailsScreen ({route}){
     console.log(route.params.product.image_small_url);
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>{route.params.product.product_name}</Text>
+            <Text>Nom : {route.params.product.product_name}</Text>
+            <Text>Ingrédients : {route.params.product.ingredients_text}</Text>
+            <Text>Quantité : {route.params.product.quantity}</Text>
             <Image 
                 source={{uri: route.params.product.image_small_url }}
                 style={{ alignSelf: 'center', width: 200, height: 200, borderRadius: 100 }}
