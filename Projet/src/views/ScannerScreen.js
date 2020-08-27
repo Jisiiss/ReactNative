@@ -95,8 +95,13 @@ export default class ScannerView extends React.Component {
                 <View style={{flex: 1}}>
                     <Text>Scan screen</Text>
                     <Camera
-                        style={{ flex: 1 }}
+                         style={{
+                            flex: 1,
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end'
+                        }} 
                         type={Camera.Constants.Type.back}
+                        flashMode={this.state.isFlashOn ?  Camera.Constants.FlashMode.torch : Camera.Constants.FlashMode.off}
                         onBarCodeScanned={this.state.hasScanned ? undefined : this.handleBarcode}
                         useCamera2Api={true}
                     >
