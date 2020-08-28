@@ -10,13 +10,12 @@ export default class Details extends React.Component{
     }
 
     render(){
-        console.log(this.props.route.params.product);
         return (
             <Card title={this.props.route.params.product.product_name}>
                 <View>
                     <Image
                         source={{uri: this.props.route.params.product.image_small_url || this.props.route.params.product.image_ingredients_small_url }}
-                        style={{ alignSelf: 'center', width: '100%', height: 200 }}
+                        style={{ alignSelf: 'center', width: '100%', height: 150, marginBottom: 20 }}
                     />
                     <Text> Carégories : {this.props.route.params.product.categories}</Text>
                     <Text> Nutriscore : {this.props.route.params.product.nutriscore_score}</Text>

@@ -24,9 +24,6 @@ class ListFavoris extends React.Component{
                 })
 
             }
-
-            console.log('favoris', this.state.favoris)
-
    }
 
 componentDidMount(){
@@ -55,7 +52,7 @@ this.focusListener();
     else{
         return(
             <SafeAreaView style={{flex: 1, paddingTop:20}}>
-                <Text style={{paddingLeft:20, paddingTop:20, color: 'tomato', fontSize: 20}}>Mes Favoris</Text>
+                <Text style={{paddingLeft:20, paddingTop:20, color: 'darkcyan', fontSize: 20}}>Mes Favoris</Text>
                 <FlatList
                     data={this.state.favoris}
                     renderItem={(item) => this.list(item)}

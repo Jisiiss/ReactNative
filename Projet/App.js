@@ -24,7 +24,7 @@ function HomeStack() {
       <Stack.Navigator
         screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: 'darkcyan' },
       }}>
           <Stack.Screen name="Zoubir" component={Home} />
           <Stack.Screen name="Details" component={Details} />
@@ -36,7 +36,7 @@ function ScanStack() {
       <Stack.Navigator
         screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: 'darkcyan' },
       }}
       >
           <Stack.Screen name="Scanner" component={Scan} />
@@ -50,7 +50,7 @@ function FavorisStack() {
       <Stack.Navigator
         screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: 'darkcyan' },
       }}
       >
           <Stack.Screen name="Liste des favoris" component={Favoris} />
@@ -63,7 +63,7 @@ function HistoriqueStack() {
       <Stack.Navigator
         screenOptions={{
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: 'darkcyan' },
       }}
       >
           <Stack.Screen name="Historique des produits scanner" component={Historique} />
@@ -76,8 +76,8 @@ export default function App() {
   return (
     <NavigationContainer>
     <Tab.Navigator tabBarOptions={{
-        activeTintColor: '#e67e22',
-        inactiveBackgroundColor: 'tomato',
+        activeTintColor: 'black',
+        inactiveBackgroundColor: 'darkcyan',
         inactiveTintColor: '#ffffff'
       }}>
         <Tab.Screen
@@ -115,6 +115,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e67e22'
+    backgroundColor: 'black'
   },
 });

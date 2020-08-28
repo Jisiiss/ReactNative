@@ -92,7 +92,7 @@ export default class ListItem extends React.Component{
                             <Icon
                               name="trash"
                               size={25}
-                              color="red"
+                              color="darkcyan"
                             />
                         }
                         iconLeft
