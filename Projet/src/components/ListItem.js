@@ -69,11 +69,11 @@ export default class ListItem extends React.Component{
         return (
             <Card>
                 <View>
-                    <Text style={{ alignSelf: 'center'}}>{this.props.item.product_name}</Text>
+                    <Text style={{ alignSelf: 'center', fontSize: 18, marginBottom: 15 }}>{this.props.item.product_name}</Text>
                     <TouchableOpacity onPress={()=> this._onPress(this.props.item)}>
                         <Image
                         source={{uri: this.props.item.image_small_url || this.props.item.image_ingredients_small_url }}
-                        style={{ alignSelf: 'center', width: '100%', height: 150}}
+                        style={{ alignSelf: 'center', width: '100%', height: 150, marginBottom: 10}}
                         />
                     </TouchableOpacity>
                     {(this.props.routeName === 'Favoris') && (
@@ -97,7 +97,7 @@ export default class ListItem extends React.Component{
                             <Icon
                               name="heart"
                               size={25}
-                              color="#000000"
+                              color="darkcyan"
                             />
                         }
                         iconLeft
