@@ -70,7 +70,6 @@ export default class ListItem extends React.Component{
         return (
             <Card>
                 <View>
-
                     <TouchableOpacity onPress={()=> this._onPress(this.props.item)}>
                         <Text style={{ alignSelf: 'center'}}>{this.props.item.product_name}</Text>
                     </TouchableOpacity>
