@@ -42,8 +42,7 @@ export default class Scan extends React.Component {
      });
 
      Vibration.vibrate();
-     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-
+    
      //get product
      fetch(`https://world.openfoodfacts.org/api/v0/product/${data}.json`)
      .then((response) => response.json())
