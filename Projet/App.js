@@ -1,9 +1,8 @@
-<<<<<<< .merge_file_a08832
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements'
-import { AntDesign } from '@expo/vector-icons'; 
-import { FontAwesome5 } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -26,32 +25,32 @@ function HomeStack() {
         </Stack.Navigator>
     );
 }
-  
+
 
 
 export default function App() {
   return (
     <NavigationContainer>
         <Tab.Navigator>
-            <Tab.Screen 
-                name="Home" 
-                component={HomeStack} 
+            <Tab.Screen
+                name="Home"
+                component={HomeStack}
                 options={{
                     tabBarLabel: 'Produits',
                     tabBarIcon: () => <FontAwesome5 name="apple-alt" size={24} color="black" />,
                     }}
                 />
-            <Tab.Screen 
-                name="Details" 
-                component={ScannerView} 
+            <Tab.Screen
+                name="Details"
+                component={ScannerView}
                 options={{
                     tabBarLabel: 'Scanner',
                     tabBarIcon: () => <AntDesign name="scan1" size={24} color="black" />,
                     }}
                 />
-                
+
         </Tab.Navigator>
-=======
+
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
