@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Image} from 'react-native';
-import { Button, Card } from 'react-native-elements';
+import { Button, Card, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AsyncStorage } from 'react-native';
 
@@ -46,12 +46,7 @@ export default class ListItem extends React.Component{
     }
 
     delete = async (routeName, item) => {
-        /*let storedData = JSON.parse(await AsyncStorage.getItem(routeName));
-        console.log('before Stored data', storedData);
-        storedData = storedData.filter(el => !(el.product_name === item.product_name));
-
-        await AsyncStorage.setItem(routeName, JSON.stringify(storedData));*/
-
+     
         if(routeName === 'Favoris') {
             let favorisData = JSON.parse(await AsyncStorage.getItem(routeName));
             favorisData = favorisData.filter(el => !(el.product_name === item.product_name));
@@ -63,12 +58,6 @@ export default class ListItem extends React.Component{
             histData = histData.filter(el => !(el.product_name === item.product_name));
             await AsyncStorage.setItem('Historique', JSON.stringify(histData));
         }
-
-        /*if(routeName === 'Favoris') {
-            await AsyncStorage.setItem('Favoris', JSON.stringify(storedData));
-        } else {
-            await AsyncStorage.setItem('Historique', JSON.stringify(storedData));
-        }*/
     }
 
     componentDidMount(){
@@ -78,15 +67,16 @@ export default class ListItem extends React.Component{
 
     render() {
         return (
-            <Card title={this.props.item.product_name}>
+            <Card>
                 <View>
+                    <Text style={{ alignSelf: 'center'}}>{this.props.item.product_name}</Text>
                     <TouchableOpacity onPress={()=> this._onPress(this.props.item)}>
                         <Image
                         source={{uri: this.props.item.image_small_url || this.props.item.image_ingredients_small_url }}
                         style={{ alignSelf: 'center', width: '100%', height: 150}}
                         />
                     </TouchableOpacity>
-                    {(this.props.routeName === 'Favoris' || this.props.routeName === 'Historique') && (
+                    {(this.props.routeName === 'Favoris') && (
                         <Button
                         icon={
                             <Icon

@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+
 
 import Home from './src/views/HomeScreen';
 import Details from './src/views/DetailsScreen';
@@ -84,8 +85,8 @@ export default function App() {
             name="Accueil"
             component={HomeStack}
             options={{
-                tabBarLabel: 'Accueil',
-                tabBarIcon: () => <Ionicons name = "md-home" size = {24} color = "black" />,
+                tabBarLabel: 'Produits',
+                tabBarIcon: () => <FontAwesome5 name="apple-alt" size={24} color="black" />,
                 }}
             />
         <Tab.Screen
@@ -105,7 +106,7 @@ export default function App() {
           <Tab.Screen name="Historique" component={HistoriqueStack}
             options={{
               tabBarLabel: "Historique",
-              tabBarIcon: () => <Ionicons name = "ios-archive" size = {24} color = "black" /> }}
+              tabBarIcon: () => <MaterialIcons name="history" size={24} color="black" /> }}
           />
     </Tab.Navigator>
 </NavigationContainer>
