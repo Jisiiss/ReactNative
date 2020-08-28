@@ -57,14 +57,14 @@ class ListHistorique extends React.Component{
     if(this.state.historique.length === 0){
         return(
             <SafeAreaView style={{flex: 1, padding: 20}}>
-               <Text>Vous avez zéro scan</Text>
+               <Text>Aucun scan</Text>
             </SafeAreaView>
         )
     }
     else{
         return(
             <SafeAreaView style={{flex: 1, paddingTop:20}}>
-                <Text style={{paddingLeft:20, paddingTop:20, color: 'tomato', fontSize: 20}}>Mes historiques</Text>
+                <Text style={{paddingLeft:20, paddingTop:20, color: 'darkcyan', fontSize: 20}}>Mes historiques</Text>
                 <FlatList
                     data={this.state.historique}
                     renderItem={(item) => this.list(item)}

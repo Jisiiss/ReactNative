@@ -7,8 +7,10 @@ import { AsyncStorage } from 'react-native';
 
 import style from '../style';
 
+const { FlashMode: CameraFlashModes, Type: CameraTypes } = Camera.Constants;
 
 export default class Scan extends React.Component {
+
 
 
     constructor(props){
@@ -22,6 +24,7 @@ export default class Scan extends React.Component {
             productScanned: []
         };
     }
+
 
     camera = null;
 
@@ -42,19 +45,12 @@ export default class Scan extends React.Component {
      });
 
      Vibration.vibrate();
-    
+
      //get product
      fetch(`https://world.openfoodfacts.org/api/v0/product/${data}.json`)
      .then((response) => response.json())
      .then( async (responseJson) => {
 
-         if(responseJson.status_verbose === "product not found" || responseJson.status_verbose === "no code or invalid code"){
-            this.props.navigation.navigate('NotFound', {
-                codeBar: data
-            });
-         }
-         else
-         {
            this.setState({
                 productScanned: this.state.productScanned.indexOf(data) !== -1  ? this.state.productScanned : [...this.state.productScanned, data]
             });
@@ -66,11 +62,11 @@ export default class Scan extends React.Component {
             this.props.navigation.navigate('Details', {
                 product: responseJson.product
             });
-         }
 
      })
 
     };
+
 
     changeFlash = () => {
          this.state.isFlashOn ?
@@ -88,15 +84,20 @@ export default class Scan extends React.Component {
         }
 
         return (
-            <View>
-                <Camera
-                    style={style.preview}
+            <View style={{flex: 1}}>
+            <Camera
+                 style={{
+                    flex: 1,
+                    flexDirection: 'column',
+                    justifyContent: 'flex-end'
+                }}
                     ref={camera => this.camera = camera}
+                    flashMode={this.state.isFlashOn ?  Camera.Constants.FlashMode.torch : Camera.Constants.FlashMode.off}
                     onBarCodeScanned={this.state.scanned ? undefined : this.handleBarCodeScanned}
 
                 />
 
-                    <Button style={{paddingTop: 100} } title={'Flash'} onPress={()=> this.changeFlash} />
+                    <Button title={'Flash'} onPress={()=> this.changeFlash()} />
                     <Button title={'Recommencer'} onPress={()=> this.setState({scanned: null})} />
             </View>
         );

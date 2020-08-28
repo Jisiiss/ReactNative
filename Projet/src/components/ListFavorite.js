@@ -45,7 +45,7 @@ this.focusListener();
     if(this.state.favoris.length === 0){
         return(
             <SafeAreaView style={{flex: 1, padding: 20}}>
-               <Text>Vous avez zéro favoris</Text>
+               <Text>Aucun favoris</Text>
             </SafeAreaView>
         )
     }

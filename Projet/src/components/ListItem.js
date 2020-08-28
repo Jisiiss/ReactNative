@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity, Image} from 'react-native';
 import { Button, Card, Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { AsyncStorage } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 export default class ListItem extends React.Component{
 
@@ -69,12 +70,9 @@ export default class ListItem extends React.Component{
         return (
             <Card>
                 <View>
-                    <Text style={{ alignSelf: 'center'}}>{this.props.item.product_name}</Text>
+
                     <TouchableOpacity onPress={()=> this._onPress(this.props.item)}>
-                        <Image
-                        source={{uri: this.props.item.image_small_url || this.props.item.image_ingredients_small_url }}
-                        style={{ alignSelf: 'center', width: '100%', height: 150}}
-                        />
+                        <Text style={{ alignSelf: 'center'}}>{this.props.item.product_name}</Text>
                     </TouchableOpacity>
                     {(this.props.routeName === 'Favoris') && (
                         <Button
@@ -94,11 +92,7 @@ export default class ListItem extends React.Component{
                     {(this.props.routeName != 'Favoris' && this.props.routeName != 'Historique') &&(
                         <Button
                         icon={
-                            <Icon
-                              name="heart"
-                              size={25}
-                              color="#000000"
-                            />
+                            <AntDesign name="star" size={24} color="black" />
                         }
                         iconLeft
                         title=""

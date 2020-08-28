@@ -11,8 +11,9 @@ export default class Details extends React.Component{
 
     render(){
         return (
-            <Card title={this.props.route.params.product.product_name}>
+            <Card>
                 <View>
+                    <Text style={{ alignSelf: 'center'}}>{this.props.route.params.product.product_name}</Text>
                     <Image
                         source={{uri: this.props.route.params.product.image_small_url || this.props.route.params.product.image_ingredients_small_url }}
                         style={{ alignSelf: 'center', width: '100%', height: 150, marginBottom: 20 }}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Ionicons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5, MaterialIcons, AntDesign } from '@expo/vector-icons';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,7 +13,6 @@ import Details from './src/views/DetailsScreen';
 import Favoris from './src/views/FavoriteScreen';
 import Historique from './src/views/HistoryScreen';
 import Scan from './src/views/ScannerScreen';
-import NotFound from './src/views/NotFoundScreen';
 
 
 
@@ -27,7 +26,7 @@ function HomeStack() {
         headerTintColor: 'white',
         headerStyle: { backgroundColor: 'darkcyan' },
       }}>
-          <Stack.Screen name="Zoubir" component={Home} />
+          <Stack.Screen name="ZoubirApp" component={Home} />
           <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
   );
@@ -42,7 +41,6 @@ function ScanStack() {
       >
           <Stack.Screen name="Scanner" component={Scan} />
           <Stack.Screen name="Details" component={Details} />
-          <Stack.Screen name="Produit non trouvé" component={NotFound} />
       </Stack.Navigator>
   );
 }
@@ -101,7 +99,7 @@ export default function App() {
             <Tab.Screen name="Favoris" component={FavorisStack}
             options={{
               tabBarLabel: "Mes Favoris",
-              tabBarIcon: () => <Ionicons name = "ios-heart" size = {24} color = "black" /> }}
+              tabBarIcon: () => <AntDesign name="star" size={24} color="black" /> }}
           />
           <Tab.Screen name="Historique" component={HistoriqueStack}
             options={{
