@@ -76,7 +76,7 @@ export default class ListItem extends React.Component{
                         style={{ alignSelf: 'center', width: '100%', height: 150}}
                         />
                     </TouchableOpacity>
-                    {(this.props.routeName === 'Favoris' || this.props.routeName === 'Historique') && (
+                    {(this.props.routeName === 'Favoris') && (
                         <Button
                         icon={
                             <Icon
