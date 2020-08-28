@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_a08832
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements'
@@ -50,9 +51,42 @@ export default function App() {
                 />
                 
         </Tab.Navigator>
+=======
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Button } from 'react-native';
+import Hello from './components/Name.js';
+
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Salut Jordan c'est l'accueil</Text>
+      <Button
+        title="Go to Hello"
+        onPress={() => navigation.navigate('Name')}
+      />
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Name" component={Hello} />
+        <Stack.Screen name="FlatList" component={FlatList} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -62,3 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
+

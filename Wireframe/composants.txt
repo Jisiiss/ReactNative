@@ -1,0 +1,19 @@
+Page Home Composant :
+- ActivityIndicator
+- FlatList
+- Product
+- Text
+
+Page Detail Composant : 
+- view 
+- scrollView 
+- Image
+- Text 
+- Button
+
+Page Caméra Composant : 
+- View
+- Camera 
+- Button 
+- Tab Screen / Tab Navigator
+- Text
