@@ -1,42 +1,28 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
-import { Icon, Button } from 'react-native-elements'
+import { View, Image } from 'react-native'
+import { Text, Card} from 'react-native-elements'
 
-//Exemple avec une class
-/*
-export default class DetailsScreen extends React.Component{
+
+export default class Details extends React.Component{
+
+    constructor(props){
+        super(props);
+    }
 
     render(){
-        console.log(this.props.route.params.product.image_small_url);
+        console.log(this.props.route.params.product);
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>{this.props.route.params.product.product_name}</Text>
-                <Image 
-                    source={{uri: this.props.route.params.product.image_small_url }}
-                    style={{ alignSelf: 'center', width: 200, height: 200, borderRadius: 100 }}
+            <Card title={this.props.route.params.product.product_name}>
+                <View>
+                    <Image
+                        source={{uri: this.props.route.params.product.image_small_url || this.props.route.params.product.image_ingredients_small_url }}
+                        style={{ alignSelf: 'center', width: '100%', height: 200 }}
                     />
-            </View>
+                    <Text> Carégories : {this.props.route.params.product.categories}</Text>
+                    <Text> Nutriscore : {this.props.route.params.product.nutriscore_score}</Text>
+                    <Text> Quantité   : {this.props.route.params.product.nutrition_data_per}</Text>
+                </View>
+            </Card>
         );
     }
-   
-}
-*/
-
-//Exemple avec une fonction
-export default function DetailsScreen ({route}){
-
-    console.log(route.params.product.image_small_url);
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Nom : {route.params.product.product_name}</Text>
-            <Text>Ingrédients : {route.params.product.ingredients_text}</Text>
-            <Text>Quantité : {route.params.product.quantity}</Text>
-            <Image 
-                source={{uri: route.params.product.image_small_url }}
-                style={{ alignSelf: 'center', width: 200, height: 200, borderRadius: 100 }}
-                />
-        </View>
-    );
-
-
 }

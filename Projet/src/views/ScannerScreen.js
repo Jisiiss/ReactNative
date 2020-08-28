@@ -1,117 +1,105 @@
 import React from 'react';
-import {Text, View, Vibration} from "react-native";
+import { View, Text, Button,Vibration } from 'react-native';
 import { Camera } from 'expo-camera';
-import { Button } from 'react-native-elements'
+import * as Permissions from 'expo-permissions';
+import { AsyncStorage } from 'react-native';
 
-const { FlashMode: CameraFlashModes, Type: CameraTypes } = Camera.Constants;
 
-export default class ScannerView extends React.Component {
+import style from '../style';
 
-    _focusListener = null;
-    _blurListener = null;
+
+export default class Scan extends React.Component {
+
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
-            hasPermission: null,
-            hasScanned: null,
-            isFocused: true,
-            isFlashOn: false,
-            flashState: Camera.Constants.FlashMode.torch,
             hasCameraPermission: null,
             type: Camera.Constants.Type.back,
-            scanned: null
-        }
+            isFlashOn: false,
+            flashState: Camera.Constants.FlashMode.torch,
+            scanned: false,
+            productScanned: []
+        };
     }
 
-    changeFlash(){
-      this.state.isFlashOn ? 
-          this.setState({isFlashOn: false}) : 
-          this.setState({isFlashOn: true})
-   }
+    camera = null;
 
-    async componentDidMount(){
-        const { status } = await Camera.requestPermissionsAsync();
-        this.setState({
-            hasPermission: status === 'granted'
-        })
 
-        this._focusListener = this.props.navigation.addListener('focus', () => {
-            this.setState({ isFocused: true });
-        });
 
-        this._blurListener = this.props.navigation.addListener('blur', () => {
-            this.setState({ isFocused: false });
-        });
+    async componentDidMount() {
+        const camera = await Permissions.askAsync(Permissions.CAMERA);
+        //const audio = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
+        const hasCameraPermission = (camera.status === 'granted');
 
-    }
+        this.setState({ hasCameraPermission });
+    };
 
-    componentWillUnmount() {
-        if (this._focusListener) {
-            this._focusListener = null;
-        }
+    // initalization
+    handleBarCodeScanned = async ({ type, data }) => {
+        this.setState( {
+         scanned: true
+     });
 
-        if (this._blurListener) {
-            this._blurListener = null;
-        }
-    }
+     Vibration.vibrate();
+     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 
-    handleBarcode = ({ type, data }) => {
-        this.setState({
-            hasScanned: true
-        })
+     //get product
+     fetch(`https://world.openfoodfacts.org/api/v0/product/${data}.json`)
+     .then((response) => response.json())
+     .then( async (responseJson) => {
 
-        Vibration.vibrate()
-
-        return fetch(`https://world.openfoodfacts.org/api/v0/products/${data}.json`)
-            .then((response) => response.json())
-            .then((responseJson) => {
-
-                // Variante de navigate si je veux aller dans une autre pile de navigation
-                // https://reactnavigation.org/docs/params#passing-params-to-nested-navigators
-                this.props.navigation.navigate('Home', {
-                    screen: 'Details',
-                    params: { product: responseJson.product },
-                });
-            })
-            .catch((error) => {
-                console.error(error);
+         if(responseJson.status_verbose === "product not found" || responseJson.status_verbose === "no code or invalid code"){
+            this.props.navigation.navigate('NotFound', {
+                codeBar: data
             });
+         }
+         else
+         {
+           this.setState({
+                productScanned: this.state.productScanned.indexOf(data) !== -1  ? this.state.productScanned : [...this.state.productScanned, data]
+            });
+                await AsyncStorage.setItem(
+                  'Historique',
+                  JSON.stringify(this.state.productScanned)
+                );
 
-    }
+            this.props.navigation.navigate('Details', {
+                product: responseJson.product
+            });
+         }
+
+     })
+
+    };
+
+    changeFlash = () => {
+         this.state.isFlashOn ?
+             this.setState({isFlashOn: false}) :
+             this.setState({isFlashOn: true});
+     }
 
     render() {
+        const { hasCameraPermission } = this.state;
 
-        if (this.state.hasPermission === null) {
-            return <View/>;
-        }
-        if (this.state.hasPermission === false) {
-            return <View><Text>No access to camera</Text></View>
-        }
-
-        else if (this.state.isFocused)
-        {
-            return (
-                <View style={{flex: 1}}>
-                    <Text>Scan screen</Text>
-                    <Camera
-                         style={{
-                            flex: 1,
-                            flexDirection: 'column',
-                            justifyContent: 'flex-end'
-                        }} 
-                        type={Camera.Constants.Type.back}
-                        flashMode={this.state.isFlashOn ?  Camera.Constants.FlashMode.torch : Camera.Constants.FlashMode.off}
-                        onBarCodeScanned={this.state.hasScanned ? undefined : this.handleBarcode}
-                        useCamera2Api={true}
-                    >
-                    <Button title={'Flash'} onPress={()=> this.changeFlash()} />
-                    </Camera>
-                </View>
-            )
+        if (hasCameraPermission === null) {
+            return <View />;
+        } else if (hasCameraPermission === false) {
+            return <Text>Access to camera has been denied.</Text>;
         }
 
-        return null
+        return (
+            <View>
+                <Camera
+                    style={style.preview}
+                    ref={camera => this.camera = camera}
+                    onBarCodeScanned={this.state.scanned ? undefined : this.handleBarCodeScanned}
 
-    }
-}
+                />
+
+                    <Button style={{paddingTop: 100} } title={'Flash'} onPress={()=> this.changeFlash} />
+                    <Button title={'Recommencer'} onPress={()=> this.setState({scanned: null})} />
+            </View>
+        );
+    };
+};

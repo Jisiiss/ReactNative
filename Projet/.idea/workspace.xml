@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dbe0e7b9-83c2-4a03-a58b-29c0f73e856b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1gXX8riLz84fYXPu8xwNtJyddcE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dbe0e7b9-83c2-4a03-a58b-29c0f73e856b" name="Default Changelist" comment="" />
+      <created>1598261755269</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598261755269</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2402" y="200" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598519780110">
+      <screen x="1920" y="3" width="1536" height="832" />
+    </state>
+    <state x="2402" y="200" key="#com.intellij.fileTypes.FileTypeChooser/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1598519780110" />
+    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1598444937688">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1598444937688" />
+    <state x="2197" y="3" key="SettingsEditor" timestamp="1598272313858">
+      <screen x="1920" y="3" width="1536" height="832" />
+    </state>
+    <state x="2197" y="3" key="SettingsEditor/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1598272313858" />
+    <state x="360" y="120" width="1200" height="800" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1598607290229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="360" y="120" width="1200" height="800" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598607290229" />
+    <state x="360" y="120" width="1200" height="800" key="com.android.tools.idea.avdmanager.AvdListDialog/1920.3.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1598271117004" />
+    <state x="2208" y="99" width="960" height="640" key="com.android.tools.idea.avdmanager.AvdListDialog/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1598271078516" />
+    <state x="591" y="300" key="com.intellij.ide.util.TipDialog" timestamp="1598426242448">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="591" y="300" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598426242448" />
+    <state x="2393" y="243" key="com.intellij.ide.util.TipDialog/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1598271005468" />
+    <state x="503" y="0" width="942" height="1040" key="find.popup" timestamp="1598536989262">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="503" y="0" width="942" height="1040" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598536989262" />
+    <state x="2322" y="3" width="753" height="832" key="find.popup/1920.3.1536.832/0.0.1920.1040@1920.3.1536.832" timestamp="1598519596760" />
+  </component>
+</project>
